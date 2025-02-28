@@ -1,16 +1,19 @@
 import { createConfig, setElement } from './context/config'
+import { NodeListRender } from '@/components/NodeRenderer'
 import RCode from '@/components/defaults/RCode/index.vue'
 import RThink from '@/components/defaults/RThink/index.vue'
-
 import HtmlRender from '@/components/HtmlRender'
+
 createConfig({
-    'THINK':(node:HTMLElement) => <RThink node={node}></RThink>
+    'THINK':(node:HTMLElement) => <RThink node={node}></RThink>,
+    'PRE': (node)=> <RCode node={node}></RCode>
 })
 
-setElement('PRE', RCode)
-
+// setElement('PRE', RCode)
+// setElement('PRE', (node)=> <RCode node={node}></RCode>)
 export default HtmlRender
 export {
     createConfig,
-    setElement
+    setElement,
+    NodeListRender
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps({
     node: {
-        type: Object as () => HTMLElement,
+        type: Object as () => Node,
         required: true,
     },
 })
