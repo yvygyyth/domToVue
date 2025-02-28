@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { DomRenderers } from '@/components/DomRenderer/index.tsx'
-import { computed } from 'vue'
-import { getBodyChildNodes } from '@/utils'
+import HtmlRender from '@/components/HtmlRender'
 const domStr = `
 <think>
 好的，用户问我会不会写Python代码，并且让我写一个“世界你好”。首先，我得确认这是什么意思。显然，他想要的是用Python输出“世界你好”，也就是类似“Hello, World!”的程序。
@@ -18,16 +16,13 @@ const domStr = `
 </think><p>当然可以！以下是一个简单的Python代码，用于输出“世界你好”：</p>
 <pre><code class="language-python">print(&quot;世界你好&quot;)
 </code></pre>
-<p>这段代码会在控制台输出：<br>世界你好</p>`
-
-const domHtml = computed(()=>{
-  return getBodyChildNodes(domStr)
-})
+<p>这段代码会在控制台输出：<br>世界你好</p>
+`
 </script>
 
 <template>
   <div>
-    <DomRenderers :nodes="domHtml"></DomRenderers>
+    <HtmlRender :html="domStr"></HtmlRender>
   </div>
 </template>
 
