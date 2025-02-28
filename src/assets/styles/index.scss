@@ -1,0 +1,91 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:math";
+
+// flex布局
+@mixin flex-row-gap($gap){
+    display: flex;
+    flex-direction: row;
+    column-gap: $gap;
+}
+
+@mixin flex-col-gap($gap){
+    display: flex;
+    flex-direction: column;
+    row-gap: $gap;
+}
+
+/* 媒体查询 */
+$breakPoints: (
+  phone: (0px, 425px),
+  pad: 426px
+);
+
+@mixin responseTo($breakname) {
+  $bp: map.get($breakPoints, $breakname);
+  @if meta.type-of($bp) == 'list'{
+    $min: list.nth($bp, 1);
+    $max: list.nth($bp, 2);
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $bp) {
+      @content;
+    }
+  }
+}
+
+
+// 自定义滚动条
+@mixin custom-scrollbar(
+  $size: 6px, 
+  $track-color: #F9F9F9, 
+  $thumb-color: #ECECEC, 
+  $thumb-hover-color: #E3E3E3
+) {
+  // WebKit 浏览器（Chrome, Safari 等）
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: math.div($size, 2);
+  }
+  
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $thumb-hover-color;
+  }
+  &:hover{
+    scrollbar-color: $thumb-hover-color $track-color;
+    &::-webkit-scrollbar-thumb {
+      background: $thumb-hover-color;
+    }
+  }
+}
+
+
+// 自定义图标背景
+@mixin icon-bg($color: #333, $border-color: transparent, $size: 32px, $radius: 50%) {
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color;
+  border-radius: $radius;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba($color, 0.8);
+  }
+}
