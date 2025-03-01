@@ -12,7 +12,7 @@
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/你的用户名/仓库名.git"
+      "url": "https://github.com/yvygyyth/domToVue"
     },
     "peerDependencies": {
       "vue": "^3.5.13"

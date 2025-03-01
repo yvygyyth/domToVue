@@ -1,6 +1,6 @@
 import { mergeConfig } from 'vite'
 import baseConfig from './vite.config.base'
-import { resolve } from 'path'
+import dts from 'vite-plugin-dts'
 
 export default mergeConfig(
   {
@@ -8,10 +8,11 @@ export default mergeConfig(
     build: {
       lib: {
         // Could also be a dictionary or array of multiple entry points
-        entry: resolve(__dirname, '../src/index.js'),
+        entry: 'src/index',
         name: 'domToVue',
         // the proper extensions will be added
-        fileName: 'dom-to-vue',
+        fileName: 'index',
+        formats: ['es', 'umd']
       },
       rollupOptions: {
         // 确保外部化处理那些你不想打包进库的依赖
@@ -26,6 +27,15 @@ export default mergeConfig(
         },
       },
     },
+    plugins: [
+      dts({
+        tsconfigPath: 'tsconfig.app.json',
+        // include: 'src/index',
+        // exclude: ['**/*.spec.ts', '**/test-utils'],
+        copyDtsFiles: true,
+        rollupTypes: true
+      })
+    ]
   },
   baseConfig
 )
