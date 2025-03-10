@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import HtmlRender from '@/components/HtmlRender'
+import RCode from '@/components/RCode/index.vue'
+import RThink from '@/components/RThink/index.vue'
+import HtmlRender, { createConfig, setElement } from 'domtovue'
+
+createConfig({})
+setElement('PRE', RCode)
+setElement('THINK', RThink)
 const domStr = `
 <think>
 好的，用户问我会不会写Python代码，并且让我写一个“世界你好”。首先，我得确认这是什么意思。显然，他想要的是用Python输出“世界你好”，也就是类似“Hello, World!”的程序。

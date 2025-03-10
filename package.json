@@ -1,20 +1,13 @@
 {
-  "name": "domtovue",
-  "version": "0.1.3",
-  "description": "this is domToVue package",
-  "main": "dist/index.js",
-  "type": "module",
+  "name": "domToVue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "vite --config ./config/vite.config.dev.ts",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "build-only": "vite build --config ./config/vite.config.prod.ts",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "highlight.js": "^11.11.1",
-    "vue": "^3.5.13",
-    "vue-clipboard3": "^2.0.0"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
@@ -24,12 +17,9 @@
     "sass": "^1.85.1",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
-    "vite-plugin-dts": "^4.5.1",
     "vue-tsc": "^2.2.4"
   },
-  "files": ["dist"],
-  "sideEffects": false,
-  "keywords": ["domtovue", "vue", "dom"],
-  "author": "yuzinan <1589937631@qq.com>",
-  "license": "MIT"
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,0 +1,20 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "this is domToVue package",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config ./config/vite.config.dev.ts",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "build-only": "vite build --config ./config/vite.config.prod.ts",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "domtovue": "workspace:*",
+    "highlight.js": "^11.11.1",
+    "vue-clipboard3": "^2.0.0"
+  },
+  "files": ["dist"],
+  "sideEffects": false
+}
