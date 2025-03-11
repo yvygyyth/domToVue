@@ -1,4 +1,4 @@
-import { createConfig, setElement } from './context/config'
+import { setHandler } from './context/config'
 import { NodeListRender } from '@/components/NodeRenderer'
 // import RCode from '@/examples/RCode/index.vue'
 // import RThink from '@/examples/RThink/index.vue'
@@ -13,7 +13,6 @@ import HtmlRender from '@/components/HtmlRender'
 // setElement('PRE', (node)=> <RCode node={node}></RCode>)
 export default HtmlRender
 export {
-    createConfig,
-    setElement,
+    setHandler,
     NodeListRender
 }

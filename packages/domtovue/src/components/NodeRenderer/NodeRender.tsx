@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { resolveNodeHandler } from '@/renderers/registry'
+import { resolveNode } from '@/renderers/registry'
 
 const NodeRender = defineComponent({
     name: 'NodeRender',
@@ -10,8 +10,9 @@ const NodeRender = defineComponent({
         },
     },
     setup(props) {
+        console.log('NodeRender', props.node);
         return () => {
-            return resolveNodeHandler(props.node);
+            return resolveNode(props.node);
         };
     },
 });

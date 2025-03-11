@@ -1,23 +1,29 @@
-import { useConfig } from '@/context/config'
+import { useConfig } from "@/context/config";
 import type { NodeHandlerReturn } from '@/core/node-types'
-import { handleElement } from './default'
+export const resolveNode = (node: Node): NodeHandlerReturn => {
+    const config = useConfig();
 
-export function resolveNodeHandler(node: Node): NodeHandlerReturn {
-  const config = useConfig()
-  
-  switch (node.nodeType) {
-    case Node.ELEMENT_NODE:
-        const tagName = (node as HTMLElement).tagName.toUpperCase()
-        const handler = config.elementHandlers[tagName] || handleElement
-        return handler(node as HTMLElement)
-      
-    case Node.TEXT_NODE:
-        return config.textHandler?.(node as Text) || null
-      
-    case Node.COMMENT_NODE:
-        return config.commentHandler?.(node as Comment) || null
-      
-    default:
-        return null
-  }
-}
+    // 1. 优先处理自定义匹配器
+    for (const { matcher, handler } of config.custom) {
+        if (matcher(node)) {
+            return handler(node as Parameters<typeof handler>[0]);
+        }
+    }
+
+    // 2. 处理标签名（仅适用于元素节点）
+    if (node.nodeType === Node.ELEMENT_NODE) {
+        const element = node as Element;
+        const tagHandler = config.tagName[element.tagName.toUpperCase()];
+        if (tagHandler) {
+            return tagHandler(element);
+        }
+    }
+
+    // 3. 处理节点类型
+    const typeHandler = config.nodeType[node.nodeType];
+    if (typeHandler) {
+        return typeHandler(node as Parameters<typeof typeHandler>[0]);
+    }
+
+    return null;
+};
