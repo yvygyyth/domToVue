@@ -1,4 +1,4 @@
-import type {  Component } from "vue";
+import type { Component } from "vue";
 import type { JSX } from "vue/jsx-runtime";
 
 export type NodeConstants = typeof Node;
@@ -31,7 +31,7 @@ export type NodeTagRecord<T extends string> =
     Node;
 
 // 自定义匹配函数类型
-export type MatcherFn<N extends Node = Node> = (node: Node) => node is N;
+export type MatcherFn<N extends Node = Node> = (node: N) => boolean;
 
 export type NodeHandlerReturn = Component | string | null | JSX.Element;
 
@@ -46,12 +46,13 @@ type TagNameHandlers = {
     [K in string]: Handler<NodeTagRecord<K>>
 }
 
+type CustomRule<T extends Node = Node> = {
+    matcher: MatcherFn<T>;
+    handler: Handler<T>;
+};
 // 配置存储结构
 export interface HandlerConfig {
     nodeType: NodeTypeHandlers;
     nodeName: TagNameHandlers;
-    custom: Array<{
-        matcher: MatcherFn;
-        handler: Handler;
-    }>;
+    custom: Array<CustomRule>;
 }
