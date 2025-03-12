@@ -4,7 +4,7 @@ import type { HandlerConfig } from '@/core/node-types'
 const handleText = (textNode: Text) => textNode.textContent;
 const handleComment = () => null;
 const handleElement = (node: Element) =>{
-    const Tag = node.tagName.toLowerCase();
+    const Tag = node.nodeName.toLowerCase();
     const attrs = Array.from(node.attributes).reduce((acc, attr) => {
         acc[attr.name] = attr.value;
         return acc;
@@ -15,14 +15,12 @@ const handleElement = (node: Element) =>{
 }
 
 export const defaultConfig: HandlerConfig = {
-    // @ts-ignore
     nodeType: {
         [Node.TEXT_NODE]: handleText,
         [Node.COMMENT_NODE]: handleComment,
         [Node.ELEMENT_NODE]: handleElement
     },
-    // @ts-ignore
-    tagName: {
+    nodeName: {
         "#text":handleText,
         "#comment":handleComment
     },

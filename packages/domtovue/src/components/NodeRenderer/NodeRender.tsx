@@ -10,7 +10,6 @@ const NodeRender = defineComponent({
         },
     },
     setup(props) {
-        console.log('NodeRender', props.node);
         return () => {
             return resolveNode(props.node);
         };

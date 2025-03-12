@@ -19,6 +19,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "strictFunctionType":false,
 
     "declaration": true,
     "declarationDir": "dist/types",

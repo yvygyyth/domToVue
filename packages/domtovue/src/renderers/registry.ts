@@ -12,8 +12,8 @@ export const resolveNode = (node: Node): NodeHandlerReturn => {
 
     // 2. 处理标签名（仅适用于元素节点）
     if (node.nodeType === Node.ELEMENT_NODE) {
-        const element = node as Element;
-        const tagHandler = config.tagName[element.tagName.toUpperCase()];
+        const element = node;
+        const tagHandler = config.nodeName[element.nodeName.toUpperCase()];
         if (tagHandler) {
             return tagHandler(element);
         }
