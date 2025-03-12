@@ -5,6 +5,7 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "incremental": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -18,8 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "strictFunctionType":false,
+    "strictFunctionTypes":false,
 
     "declaration": true,
     "declarationDir": "dist/types",

@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
+
 defineProps({
     node: {
-        type: Object as () => Node,
+        type: Object as PropType<Node>,
         required: true,
     },
 })

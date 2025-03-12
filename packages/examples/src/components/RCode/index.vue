@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import useClipboard from 'vue-clipboard3';
 import { useNodeInfo } from './useNodeInfo'
-import { ref } from 'vue'
+import { ref, type PropType } from 'vue'
 const props = defineProps({
     node: {
-        type: Object as () => HTMLElement,
+        type: Object as PropType<HTMLElement>,
         required: true,
     },
 })
