@@ -1,0 +1,21 @@
+/* 定义闪烁动画 */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 0.5s infinite;
+    width: 4px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: black;
+}

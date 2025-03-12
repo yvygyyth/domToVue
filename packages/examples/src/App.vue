@@ -26,6 +26,7 @@ const domStr = `
 </svg>
 这事一段text
 这事一段text\n
+<span class="cursor"></span></p>
 `
 </script>
 
@@ -35,5 +36,6 @@ const domStr = `
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/styles/index.scss'
 </style>
