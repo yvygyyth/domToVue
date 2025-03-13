@@ -24,17 +24,55 @@ pnpm -filter examples dev
 ## 快速开始
 
 ```typescript
-import { setComponent, setHandler } from 'domtovue'
-import MyComponent from './MyComponent.vue'
+<script setup lang="ts">
+import { setComponent } from 'domtovue'
+import HtmlRender from 'domtovue'
+import RThink from './RThink.vue'
 
-// 注册标签组件
-setComponent('CUSTOM-TAG', MyComponent)
+// 注册自定义组件
+setComponent('THINK', RThink)
 
-// 注册自定义处理程序
-setHandler(
-  node => node.nodeType === Node.TEXT_NODE,
-  textNode => {
-    return `处理文本内容: ${textNode.textContent}`
-  }
-)
+
+// 原始DOM字符串（包含常规标签和自定义标签）
+const domStr = `
+  <think>用户思考过程示例文本</think>
+  <pre><code>console.log('Hello World')</code></pre>
+  <p>文本节点换行处理\nexample</p>
+`
+</script>
+
+<template>
+  <HtmlRender :html="domStr" />
+</template>
+
+```
+
+```vue组件
+<script setup lang="ts">
+import type { PropType } from 'vue'
+
+defineProps({
+    node: {
+        type: Object as PropType<Node>,
+        required: true,
+    },
+})
+
+</script>
+
+<template>
+    <div class="think">
+        {{ node.textContent }}
+    </div>
+</template>
+
+<style scoped lang="scss">
+.think{
+    display: block;
+    color: #8b8b8b;
+    border-left: 2px solid #eee;
+    padding-left: 12px;
+    line-height: 30px;
+}
+</style>
 ```
