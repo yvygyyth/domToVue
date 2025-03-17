@@ -128,7 +128,7 @@ interface VueComponent<T extends Node = Node> {
 }
 ```
 
-## 最佳实践
+## 最佳实践,匹配优先级依次为MatcherFn，标签名，节点类型
 
 1. **优先使用标签名注册**：
 ```typescript
