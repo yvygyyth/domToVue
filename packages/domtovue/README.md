@@ -4,7 +4,6 @@
 
 将 DOM 节点转换为 Vue 组件的轻量级工具库
 
-> 📦 ​**源码地址**: https://github.com/yvygyyth/domToVue
 
 ## 特性
 
@@ -151,3 +150,7 @@ setHandler('priority-tag', handlePriority)
 // 通用处理
 setComponent('div', BaseDivComponent)
 ```
+
+## 使用场景
+
+Ai返回markdown，转化为html字符串后用domtovue渲染为vue组件，丰富你的样式和更加融入vue3项目
